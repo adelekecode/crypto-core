@@ -12,6 +12,7 @@ from pathlib import Path
 from django.utils.timezone import timedelta
 import json
 from dotenv import find_dotenv, load_dotenv
+from configurations import Configuration, values
 
 load_dotenv(find_dotenv())
 
@@ -132,6 +133,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+DATABASES = values.DatabaseURLValue(
+        'sqlite:///{}'.format(os.path.join(BASE_DIR, 'db.sqlite3'))
+    )
 
 
 
@@ -420,35 +426,16 @@ if os.getenv("ENVIRONMENT") == "production":
     
 
 
-if os.getenv("ENVIRONMENT") == "development":
-    """
-    The in-development settings and the default configuration.
-    """
-    DEBUG = True
-
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv("db_name"),
-            'HOST': os.getenv("db_host"),
-            'USER': os.getenv("db_user"),
-            'PASSWORD': os.getenv("db_password"),
-            'PORT': os.getenv("db_port")
-
-        }
-    }
-
     
 
 
 
-if os.getenv("ENVIRONMENT") == "local":
+# if os.getenv("ENVIRONMENT") == "local":
     
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3'
-        }
-    }
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': BASE_DIR / 'db.sqlite3'
+#         }
+#     }
 
