@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv('secret_key')
 DEBUG = True
 
 ALLOWED_HOSTS = ['core.dannonapi.com', 'localhost' ]
-CSRF_TRUSTED_ORIGINS = ['https://core.dannonapi.com', 'localhost' ]
+CSRF_TRUSTED_ORIGINS = ['https://core.dannonapi.com', 'https://localhost' ]
 
 # Application definition
 INSTALLED_APPS = [
