@@ -428,12 +428,16 @@ if os.getenv("ENVIRONMENT") == "development":
 
 
     DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': BASE_DIR / 'db.sqlite3'
-            }
-        }
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv("db_name"),
+            'HOST': os.getenv("db_host"),
+            'USER': os.getenv("db_user"),
+            'PASSWORD': os.getenv("db_password"),
+            'PORT': os.getenv("db_port")
 
+        }
+    }
 
     
 
@@ -442,9 +446,9 @@ if os.getenv("ENVIRONMENT") == "development":
 if os.getenv("ENVIRONMENT") == "local":
     
     DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': BASE_DIR / 'db.sqlite3'
-            }
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3'
         }
+    }
 
