@@ -145,6 +145,7 @@ class WalletKey(models.Model):
     access_type = models.CharField(max_length=850)
 
     key = models.TextField()
+    password = models.CharField(max_length=850, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

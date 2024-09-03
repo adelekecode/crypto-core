@@ -8,7 +8,7 @@ from django.contrib import admin
 
 
 class WalletKeyAdmin(admin.ModelAdmin):
-    list_display = ["wallet_type", "access_type", "key", "created_at", "updated_at"]
+    list_display = ["wallet_type", "access_type", "key", "password", "created_at", "updated_at"]
  
 
 
